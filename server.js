@@ -97,6 +97,21 @@ app.put('/api/slides/:id', async (req, res) => {
   }
 });
 
+// Получить одну новость по id
+app.get('/api/slides/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const slide = await db.get('SELECT * FROM slides WHERE id = ?', [id]);
+    if (!slide) {
+      return res.status(404).json({ error: 'Новость не найдена' });
+    }
+    res.json(slide);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Ошибка получения новости' });
+  }
+});
+
 // Запуск сервера
 app.listen(PORT, () => {
   console.log(`Сервер запущен на http://localhost:${PORT}`);
