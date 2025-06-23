@@ -8,7 +8,7 @@ const port = 3000
 // Настройка CORS для разрешения запросов с http://localhost:3001
 app.use(
 	cors({
-		origin: 'http://localhost:3001', // Разрешаем фронтенд на порту 3001
+		origin: 'https://diplom-backend-production-1582.up.railway.app', // Разрешаем фронтенд на порту 3001
 		methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Разрешенные методы
 		allowedHeaders: ['Content-Type', 'Authorization'], // Разрешенные заголовки
 		credentials: true, // Если нужны куки или авторизация
