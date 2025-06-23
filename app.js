@@ -573,21 +573,6 @@ app.use((req, res, next) => {
 	next()
 })
 
-app.get('/enterprises', (req, res) =>
-	res.json([
-		{ id: 1, name: 'Enterprise 1', image_url: 'http://example.com/1.jpg' },
-	])
-)
-app.get('/products', (req, res) =>
-	res.json([
-		{ id: 1, name: 'Product 1', image_url: 'http://example.com/1.jpg' },
-	])
-)
-app.get('/news', (req, res) =>
-	res.json([{ id: 1, title: 'News 1', image_url: 'http://example.com/1.jpg' }])
-)
-// Другие CRUD эндпоинты...
-
 app.listen(port, () => {
 	console.log(`Server running at http://localhost:${port}`)
 })
