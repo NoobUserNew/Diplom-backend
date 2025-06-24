@@ -5,6 +5,11 @@ const cors = require('cors')
 const app = express()
 const port = 3000
 
+const path = require('path');
+
+// Статические файлы React
+
+
 // Настройка CORS для разрешения запросов с http://localhost:3001
 app.use(
 	cors({
@@ -17,6 +22,12 @@ app.use(
 
 app.use(bodyParser.json())
 
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+
+// React fallback для всех маршрутов
+app.get('*', (req, res) => {
+		res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
+});
 // Инициализация базы данных с better-sqlite3
 const db = new Database('./database.db', { verbose: console.log })
 
